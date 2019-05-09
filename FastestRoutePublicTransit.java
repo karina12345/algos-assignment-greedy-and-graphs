@@ -1,7 +1,7 @@
 /**
  * Public Transit
  * Author: Karina Ibragimova and Carolyn Yao
- * Does this compile? Y/N
+ * Does this compile? Y
  */
 
 /**
@@ -24,14 +24,7 @@ public class FastestRoutePublicTransit {
    * @param freq freq[u][v] How frequently is the train that stops at u on its way to v
    * @return shortest travel time between S and T
    */
-  public int myShortestTravelTime(
-    int S,
-    int T,
-    int startTime,
-    int[][] lengths,
-    int[][] first,
-    int[][] freq
-  ) {
+  public int myShortestTravelTime(int S, int T, int startTime, int[][] lengths, int[][] first, int[][] freq) {
     // Your code along with comments here. Feel free to borrow code from any
     // of the existing method. You can also make new helper methods.
     return 0;
