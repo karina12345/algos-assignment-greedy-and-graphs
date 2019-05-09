@@ -1,7 +1,7 @@
 /**
  * Physics Experiment
  * Author: Karina Ibragimova and Carolyn Yao
- * Does this compile or finish running within 5 seconds? Y/N
+ * Does this compile or finish running within 5 seconds? Y
  */
 
 /**
@@ -65,10 +65,19 @@ public class PhysicsExperiment {
             }
         }
     }
-    
     return scheduleTable;
   }
-
+  
+    // checks if steps are available
+  boolean steps(boolean[] available) {
+      for(int i = 1; i < available.length; i++) { 
+          if(available[i]) {
+              return false;
+          }
+      }
+      return true;
+  } 
+  
   /**
    * Makes the convenient lookup table based on the steps each student says they can do
    * @param numSteps the number of steps in the experiment
@@ -145,7 +154,6 @@ public class PhysicsExperiment {
         return false;
       }
     }
-
     return true;
   }
 
