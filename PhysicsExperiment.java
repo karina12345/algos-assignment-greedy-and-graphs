@@ -28,17 +28,44 @@ public class PhysicsExperiment {
    * @return scheduleTable: a table similar to the signUpTable where scheduleTable[X][Y] = 1 means
    *     student X is assigned to step Y in an optimal schedule
    */
-  public int[][] scheduleExperiments(
-    int numStudents,
-    int numSteps,
-    int[][] signUpTable
-  ) {
+  public int[][] scheduleExperiments(int numStudents, int numSteps, int[][] signUpTable) {
     // Your scheduleTable is initialized as all 0's so far. Your code will put 1's
     // in the table in the right places based on the return description
     int[][] scheduleTable = new int[numStudents + 1][numSteps + 1];
 
     // Your code goes here
-
+    boolean[] available = new boolean[numSteps + 1];
+    // going in order of steps while they are available
+    for(int i = 1; i < numSteps + 1; i++) { 
+        available[i] = true;
+    }
+    // until no available steps
+    while(!steps(available)) {
+        int counter = -1; // count starting from the most skilled student
+        int skilledStudent = -1; 
+        for (int student = 1; student < numStudents + 1; student++) {
+            int stepsCount = 0;
+            for (int step = 1; step < numSteps + 1; step++) { 
+                if (!available[step]) {
+                    continue;
+                }
+                if (signUpTable[student][step] == 1) {
+                    stepsCount++;
+                }
+            }
+            if (stepsCount > counter) {
+                counter = stepsCount;
+                skilledStudent = student;
+            }
+        }
+        for (int i = 1; i < numSteps + 1; i++) { 
+            if (signUpTable[skilledStudent][i] == 1 && available[i]) {
+                scheduleTable[skilledStudent][i] = 1;
+                available[i] = false; //check off the step
+            }
+        }
+    }
+    
     return scheduleTable;
   }
 
