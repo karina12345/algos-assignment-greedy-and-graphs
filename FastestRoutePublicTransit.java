@@ -167,5 +167,32 @@ public class FastestRoutePublicTransit {
     t.shortestTime(lengthTimeGraph, 0);
 
     // You can create a test case for your implemented method for extra credit below
+    int first[][] = new int[][]{
+                {0, 4, 0, 0, 0, 0, 0, 8, 0},
+                {4, 0, 8, 0, 0, 0, 0, 11, 0},
+                {0, 8, 0, 7, 0, 4, 0, 0, 2},
+                {0, 0, 7, 0, 9, 14, 0, 0, 0},
+                {0, 0, 0, 9, 0, 10, 0, 0, 0},
+                {0, 0, 4, 14, 10, 0, 2, 0, 0},
+                {0, 0, 0, 0, 0, 2, 0, 1, 6},
+                {8, 11, 0, 0, 0, 0, 1, 0, 7},
+                {0, 0, 2, 0, 0, 0, 6, 7, 0}
+        };
+
+        int freq[][] = new int[][]{
+                {0, 4, 0, 0, 0, 0, 0, 8, 0},
+                {4, 0, 8, 0, 0, 0, 0, 11, 0},
+                {0, 8, 0, 7, 0, 4, 0, 0, 2},
+                {0, 0, 7, 0, 9, 14, 0, 0, 0},
+                {0, 0, 0, 9, 0, 10, 0, 0, 0},
+                {0, 0, 4, 14, 10, 0, 2, 0, 0},
+                {0, 0, 0, 0, 0, 2, 0, 1, 6},
+                {8, 11, 0, 0, 0, 0, 1, 0, 7},
+                {0, 0, 2, 0, 0, 0, 6, 7, 0}
+        };
+        int start = 1;
+        int end = 2;
+        int shortestTravelTime = t.myShortestTravelTime(start, end, 0, lengthTimeGraph, first, freq);
+        System.out.println("The shortest travel time between station " + start + " and " + end + " is: " + shortestTravelTime);
   }
 }
