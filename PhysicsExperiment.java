@@ -32,8 +32,7 @@ public class PhysicsExperiment {
     // Your scheduleTable is initialized as all 0's so far. Your code will put 1's
     // in the table in the right places based on the return description
     int[][] scheduleTable = new int[numStudents + 1][numSteps + 1];
-
-    // Your code goes here
+    
     boolean[] available = new boolean[numSteps + 1];
     // going in order of steps while they are available
     for(int i = 1; i < numSteps + 1; i++) { 
@@ -68,7 +67,7 @@ public class PhysicsExperiment {
     return scheduleTable;
   }
   
-    // checks if steps are available
+  // checks if steps are available
   boolean steps(boolean[] available) {
       for(int i = 1; i < available.length; i++) { 
           if(available[i]) {
