@@ -27,7 +27,56 @@ public class FastestRoutePublicTransit {
   public int myShortestTravelTime(int S, int T, int startTime, int[][] lengths, int[][] first, int[][] freq) {
     // Your code along with comments here. Feel free to borrow code from any
     // of the existing method. You can also make new helper methods.
-    return 0;
+        int[] optimal = new int[lengths[0].length];
+        Boolean[] station = new Boolean[lengths[0].length];
+        
+        for (int vertex = 0; vertex < lengths[0].length; vertex++) {
+            optimal[vertex] = Integer.MAX_VALUE;
+            station[vertex] = false;
+        }
+        
+        optimal[S] = startTime; 
+        for(int node = 0; node < lengths[0].length - 1; node++) {
+            int min = -1;
+            int minimum = Integer.MAX_VALUE;
+            for (int i = 0; i < optimal.length; i++) {
+                if (!station[i] && optimal[i] <= minimum) {
+                    minimum = optimal[i];
+                    min = i;
+                }
+            }
+            
+            station[min] = true;
+            int wait;
+            for (int i = 0; i < lengths[0].length; i++) {
+                // optimal time occurs before the first train arrived
+                if(optimal[min] > first[min][i]){
+                    // train arrived
+                    if(freq[min][i] == 0)
+                        wait = optimal[min] + lengths[min][i];
+                    else {
+                        wait = ((optimal[min] - first[min][i]) % freq[min][i]);
+                        // no wait
+                        if(wait == 0)
+                            wait = optimal[min] + lengths[min][i];
+                        else 
+                            wait = optimal[min] + lengths[min][i] 
+                            		       + freq[min][i] - wait;
+                    }
+                } else {
+                    wait = first[min][i] - optimal[min];
+                    wait = optimal[min] + lengths[min][i] + wait;
+                }
+
+                if (!station[i] && lengths[min][i] != 0 
+                	  && optimal[min] != Integer.MAX_VALUE && wait < optimal[i]) 
+                {
+                    optimal[i] = wait;
+                }
+            }
+        }
+        // shortest travel time between S and T taking wait into account
+        return optimal[T] - startTime;   
   }
 
   /**
