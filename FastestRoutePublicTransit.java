@@ -25,8 +25,7 @@ public class FastestRoutePublicTransit {
    * @return shortest travel time between S and T
    */
   public int myShortestTravelTime(int S, int T, int startTime, int[][] lengths, int[][] first, int[][] freq) {
-    // Your code along with comments here. Feel free to borrow code from any
-    // of the existing method. You can also make new helper methods.
+
         int[] optimal = new int[lengths[0].length];
         Boolean[] station = new Boolean[lengths[0].length];
         
@@ -166,7 +165,7 @@ public class FastestRoutePublicTransit {
     FastestRoutePublicTransit t = new FastestRoutePublicTransit();
     t.shortestTime(lengthTimeGraph, 0);
 
-    // You can create a test case for your implemented method for extra credit below
+    // EXTRA CREDIT
     int first[][] = new int[][]{
                 {0, 4, 0, 0, 0, 0, 0, 8, 0},
                 {4, 0, 8, 0, 0, 0, 0, 11, 0},
